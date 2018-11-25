@@ -94,12 +94,12 @@ namespace utf
                 return onerror_policy::apply("invalid byte count decoding utf8 string.");
 
             uint32_t codepoint = start_byte;
-            for (int8_t i = 1; i < byte_count; ++i, ++pos, ++consumed)
+            for (size_t i = 1; i < byte_count; ++i, ++pos, ++consumed)
             {
                 if (pos == end)
-                    return (replace = i-1,onerror_policy::apply("unexpected eof deocding of ut8 string."));
+                    return (replace = static_cast<int8_t>(i-1),onerror_policy::apply("unexpected eof deocding of ut8 string."));
                 else if ((*pos & 0xC0) != 0x80)
-                    return (replace = i-1,onerror_policy::apply("invalid byte deocding of ut8 string. expected continuation byte."));
+                    return (replace = static_cast<int8_t>(i-1),onerror_policy::apply("invalid byte deocding of ut8 string. expected continuation byte."));
 
                 codepoint <<= 6;
                 codepoint |= static_cast<uint32_t>(*pos) & 0x3F;
