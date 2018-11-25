@@ -219,19 +219,18 @@ target_link_libraries(somelib PRIVATE utf::utf)
 * Convert existing utf16 string to utf8 with utility functions.
 
 ```c++
-#include <ifstream>
+#include <fstream>
 #include <iterator>
 #include <utf/utf.h>
 
 int main()
 {
-	using namespace utf;
-    
-    u16string u16_text = U"ɦΈ˪˪ʘ";
-    //use default platform endianness, default onerror policy.
-    u8string u8_text = utf16_to_utf8(u16_text.begin(),u16_text.end());
-}
+    using namespace utf;
 
+    u16string u16_text = u"ɦΈ˪˪ʘ";
+    //use default platform endianness, default onerror policy.
+    u8string u8_text = utf16_to_utf8(u16_text.begin(), u16_text.end());
+}
 ```
 
 * Convert from an existing utf32 string to utf8 with iterators.
