@@ -10,16 +10,20 @@
 
 # define UTF_PLATFORM_LITTLE_ENDIAN utf::little_endian
 # define UTF_PLATFORM_BIG_ENDIAN utf::big_endian
-# ifdef _WIN32
+# ifdef(_WIN32)
 #   define UTF_PLATFORM_ENDIANESS UTF_PLATFORM_LITTLE_ENDIAN
 #   define UTF_PLATFORM_BSWAP32(U32) _byteswap_ulong(U32)
 #   define UTF_PLATFORM_BSWAP16(U16) _byteswap_ushort(U16)
-# elif defined __linux__
-#   include <endian.h>
+# else
+#   if defined(__linux__)
+#     include <endian.h>
+#   elif defined(OS_MACOSX)
+#     include <machine/endian.h>
+#   endif
 #   if __BYTE_ORDER == __LITTLE_ENDIAN
-#       define UTF_PLATFORM_ENDIANESS UTF_PLATFORM_LITTLE_ENDIAN
+#     define UTF_PLATFORM_ENDIANESS UTF_PLATFORM_LITTLE_ENDIAN
 #   elif __BYTE_ORDER  == __BIG_ENDIAN
-#       define UTF_PLATFORM_ENDIANESS UTF_PLATFORM_BIG_ENDIAN
+#     define UTF_PLATFORM_ENDIANESS UTF_PLATFORM_BIG_ENDIAN
 #   endif
 #   define UTF_PLATFORM_BSWAP32(U32) __builtin_bswap32(U32)
 #   define UTF_PLATFORM_BSWAP16(U16) __builtin_bswap16(U16)
