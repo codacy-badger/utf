@@ -34,7 +34,11 @@ TEST_CASE("utf16_to_utf32_iterator" )
         while(u16iter_pos != u16iter_end)
         {
             REQUIRE(u32_le_data_pos != u32_le_data_end);
-            REQUIRE( static_cast<uint32_t>(*u16iter_pos++) ==  static_cast<uint32_t>(*u32_le_data_pos++) );
+
+			auto u16_to_u32_iter_value = static_cast<uint32_t>(*u16iter_pos++);
+			auto u32_le_data_value = static_cast<uint32_t>(*u32_le_data_pos++);
+
+			REQUIRE(u16_to_u32_iter_value == u32_le_data_value);
         }
     
     }
@@ -58,7 +62,12 @@ TEST_CASE("utf16_to_utf32_iterator" )
         while(u16iter_pos != u16iter_end)
         {
             REQUIRE(u32_le_data_pos != u32_le_data_end);
-            REQUIRE( static_cast<uint32_t>(*u16iter_pos++) ==  static_cast<uint32_t>(*u32_le_data_pos++) );
+
+			auto u16_to_u32_iter_value = static_cast<uint32_t>(*u16iter_pos++);
+			auto u32_le_data_value = static_cast<uint32_t>(*u32_le_data_pos++);
+
+			REQUIRE(u16_to_u32_iter_value == u32_le_data_value);
+
         }
     
     }
@@ -87,13 +96,23 @@ TEST_CASE("utf16_to_utf32_iterator" )
         while(u16iter_pos != u16iter_end)
         {
             REQUIRE(u32_le_data_pos != u32_le_data_end);
-            REQUIRE( static_cast<uint32_t>(*u16iter_pos++) ==  static_cast<uint32_t>(*u32_le_data_pos++) );
+
+
+			auto u16_to_u32_iter_value = static_cast<uint32_t>(*u16iter_pos++);
+			auto u32_le_data_value = static_cast<uint32_t>(*u32_le_data_pos++);
+
+
+            REQUIRE(u16_to_u32_iter_value == u32_le_data_value);
         }
     
         while(u16iter_rpos != u16iter_rend )
         {
             REQUIRE(u32_le_data_rpos != u32_le_data_rend);
-            REQUIRE( static_cast<uint32_t>(*u16iter_rpos++) ==  static_cast<uint32_t>(*u32_le_data_rpos++) );
+
+			auto u16_to_u32_riter_value = static_cast<uint32_t>(*u16iter_rpos++);
+			auto u32_le_rdata_value = static_cast<uint32_t>(*u32_le_data_rpos++);
+
+            REQUIRE(u16_to_u32_riter_value == u32_le_rdata_value );
         }
 
     }
@@ -117,7 +136,11 @@ TEST_CASE("utf16_to_utf32_iterator" )
         while(u16iter_pos != u16iter_end)
         {
             REQUIRE(u32_be_data_pos != u32_be_data_end);
-            REQUIRE( static_cast<uint32_t>(*u16iter_pos++) ==  static_cast<uint32_t>(*u32_be_data_pos++) );
+
+			auto u16_to_u32_iter_value = static_cast<uint32_t>(*u16iter_pos++);
+			auto u32_be_data_value = static_cast<uint32_t>(*u32_be_data_pos++);
+
+            REQUIRE( u16_to_u32_iter_value == u32_be_data_value );
         }
     
     }
@@ -141,7 +164,11 @@ TEST_CASE("utf16_to_utf32_iterator" )
         while(u16iter_pos != u16iter_end)
         {
             REQUIRE(u32_be_data_pos != u32_be_data_end);
-            REQUIRE( static_cast<uint32_t>(*u16iter_pos++) ==  static_cast<uint32_t>(*u32_be_data_pos++) );
+
+			auto u16_to_u32_iter_value = static_cast<uint32_t>(*u16iter_pos++);
+			auto u32_be_data_value = static_cast<uint32_t>(*u32_be_data_pos++);
+
+            REQUIRE( u16_to_u32_iter_value  == u32_be_data_value );
         }
     
     }
@@ -170,13 +197,22 @@ TEST_CASE("utf16_to_utf32_iterator" )
         while(u16iter_pos != u16iter_end)
         {
             REQUIRE(u32_be_data_pos != u32_be_data_end);
-            REQUIRE( static_cast<uint32_t>(*u16iter_pos++) ==  static_cast<uint32_t>(*u32_be_data_pos++) );
+
+			auto u16_to_u32_iter_value = static_cast<uint32_t>(*u16iter_pos++);
+			auto u32_be_data_value = static_cast<uint32_t>(*u32_be_data_pos++);
+
+			REQUIRE(u16_to_u32_iter_value == u32_be_data_value);
         }
     
         while(u16iter_rpos != u16iter_rend )
         {
-            REQUIRE(u32_be_data_rpos != u32_be_data_rend);
-            REQUIRE( static_cast<uint32_t>(*u16iter_rpos++) ==  static_cast<uint32_t>(*u32_be_data_rpos++) );
+
+			REQUIRE(u32_be_data_rpos != u32_be_data_rend);
+
+			auto u16_to_u32_riter_value = static_cast<uint32_t>(*u16iter_rpos++);
+			auto u32_be_rdata_value = static_cast<uint32_t>(*u32_be_data_rpos++);
+
+            REQUIRE(u16_to_u32_riter_value == u32_be_rdata_value);
         }
     }
     
@@ -214,7 +250,11 @@ TEST_CASE("utf16_to_utf32_iterator" )
         while(u16iter_pos != u16iter_end)
         {
             REQUIRE(u32_le_data_pos != u32_le_data_end);
-            REQUIRE( static_cast<uint32_t>(*u16iter_pos++) ==  static_cast<uint32_t>(*u32_le_data_pos++) );
+
+			auto u16_to_u32_iter_value = static_cast<uint32_t>(*u16iter_pos++);
+			auto u32_le_data_value = static_cast<uint32_t>(*u32_le_data_pos++);
+
+            REQUIRE(u16_to_u32_iter_value == u32_le_data_value);
         }
         
     }

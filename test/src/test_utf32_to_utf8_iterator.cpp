@@ -35,7 +35,11 @@ TEST_CASE("utf32_to_utf8_iterator" )
         {
 
             REQUIRE(u8_data_pos != u8_data_end);
-            REQUIRE( static_cast<uint8_t>(*u32iter_pos++) ==  static_cast<uint8_t>(*u8_data_pos++) );
+
+			auto u32_to_u8_iter_value = static_cast<uint8_t>(*u32iter_pos++);
+			auto u8_data_value = static_cast<uint8_t>(*u8_data_pos++);
+
+            REQUIRE(u32_to_u8_iter_value == u8_data_value);
         }
     }
     
@@ -58,7 +62,11 @@ TEST_CASE("utf32_to_utf8_iterator" )
         while(u32iter_pos != u32iter_end)
         {
             REQUIRE(u8_data_pos != u8_data_end);
-            REQUIRE( static_cast<uint8_t>(*u32iter_pos++) ==  static_cast<uint8_t>(*u8_data_pos++) );
+
+			auto u32_to_u8_iter_value = static_cast<uint8_t>(*u32iter_pos++);
+			auto u8_data_value = static_cast<uint8_t>(*u8_data_pos++);
+
+			REQUIRE(u32_to_u8_iter_value == u8_data_value);
         }
     }
     
@@ -85,13 +93,21 @@ TEST_CASE("utf32_to_utf8_iterator" )
         while(u32iter_pos != u32iter_end)
         {
             REQUIRE(u8_data_pos != u8_data_end);
-            REQUIRE( static_cast<uint8_t>(*u32iter_pos++) ==  static_cast<uint8_t>(*u8_data_pos++) );
+
+			auto u32_to_u8_iter_value = static_cast<uint8_t>(*u32iter_pos++);
+			auto u8_data_value = static_cast<uint8_t>(*u8_data_pos++);
+
+			REQUIRE(u32_to_u8_iter_value == u8_data_value);
         }
         
         while(u32iter_rpos != u32iter_rend)
         {
             REQUIRE(u8_data_rpos != u8_data_rend);
-            REQUIRE( static_cast<uint8_t>(*u32iter_rpos++) ==  static_cast<uint8_t>(*u8_data_rpos++) );
+
+			auto u32_to_u8_riter_value = static_cast<uint8_t>(*u32iter_rpos++);
+			auto u8_rdata_value = static_cast<uint8_t>(*u8_data_rpos++);
+
+			REQUIRE(u32_to_u8_riter_value == u8_rdata_value);
         }
         
     }
@@ -117,7 +133,11 @@ TEST_CASE("utf32_to_utf8_iterator" )
         {
 
             REQUIRE(u8_data_pos != u8_data_end);
-            REQUIRE( static_cast<uint8_t>(*u32iter_pos++) ==  static_cast<uint8_t>(*u8_data_pos++) );
+
+			auto u32_to_u8_iter_value = static_cast<uint8_t>(*u32iter_pos++);
+			auto u8_data_value = static_cast<uint8_t>(*u8_data_pos++);
+
+			REQUIRE(u32_to_u8_iter_value == u8_data_value);
         }
     }
     
@@ -140,7 +160,11 @@ TEST_CASE("utf32_to_utf8_iterator" )
         while(u32iter_pos != u32iter_end)
         {
             REQUIRE(u8_data_pos != u8_data_end);
-            REQUIRE( static_cast<uint8_t>(*u32iter_pos++) ==  static_cast<uint8_t>(*u8_data_pos++) );
+
+			auto u32_to_u8_iter_value = static_cast<uint8_t>(*u32iter_pos++);
+			auto u8_data_value = static_cast<uint8_t>(*u8_data_pos++);
+
+			REQUIRE(u32_to_u8_iter_value == u8_data_value);
         }
     }
     
@@ -167,13 +191,21 @@ TEST_CASE("utf32_to_utf8_iterator" )
         while(u32iter_pos != u32iter_end)
         {
             REQUIRE(u8_data_pos != u8_data_end);
-            REQUIRE( static_cast<uint8_t>(*u32iter_pos++) ==  static_cast<uint8_t>(*u8_data_pos++) );
+
+			auto u32_to_u8_iter_value = static_cast<uint8_t>(*u32iter_pos++);
+			auto u8_data_value = static_cast<uint8_t>(*u8_data_pos++);
+
+			REQUIRE(u32_to_u8_iter_value == u8_data_value);
         }
         
         while(u32iter_rpos != u32iter_rend)
         {
             REQUIRE(u8_data_rpos != u8_data_rend);
-            REQUIRE( static_cast<uint8_t>(*u32iter_rpos++) ==  static_cast<uint8_t>(*u8_data_rpos++) );
+
+			auto u32_to_u8_riter_value = static_cast<uint8_t>(*u32iter_rpos++);
+			auto u8_rdata_value = static_cast<uint8_t>(*u8_data_rpos++);
+
+			REQUIRE(u32_to_u8_riter_value == u8_rdata_value);
         }
         
     }
