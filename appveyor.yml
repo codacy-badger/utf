@@ -4,37 +4,37 @@ environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       COMPILER: mingw
-      platform: x86
+      PLATFORM: x86
       FLAGS: ""
       GENERATOR: Ninja
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      platform: x86
+      PLATFORM: x86
       FLAGS: ""
       GENERATOR: Visual Studio 14 2015
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      platform: x86
+      PLATFORM: x86
       FLAGS: ""
       GENERATOR: Visual Studio 15 2017
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      platform: x86
+      PLATFORM: x86
       FLAGS: ""
       GENERATOR: Visual Studio 15 2017
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      platform: x64
+      PLATFORM: x64
       FLAGS: ""
       GENERATOR: Visual Studio 14 2015
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      platform: x64
+      PLATFORM: x64
       FLAGS: ""
       GENERATOR: Visual Studio 15 2017
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      platform: x64
+      PLATFORM: x64
       FLAGS: ""
       GENERATOR: Visual Studio 15 2017
 
@@ -50,7 +50,7 @@ install:
   - if "%COMPILER%"=="mingw" g++ --version
 
 before_build:
-  - cmake . -G "%GENERATOR%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
+  - cmake . -G "%GENERATOR%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin" -DCMAKE_GENERATOR_PLATFORM=%PLATFORM%
 
 build_script:
   - cmake --build . --config Release
