@@ -50,7 +50,8 @@ install:
   - if "%COMPILER%"=="mingw" g++ --version
 
 before_build:
-  - cmake . -G "%GENERATOR%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin" -DCMAKE_GENERATOR_PLATFORM=%PLATFORM%
+  - if "%PLATFORM%"=="x64" cmake . -G "%GENERATOR%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin" -DCMAKE_GENERATOR_PLATFORM=%PLATFORM%
+  - if "%PLATFORM%"=="x86" cmake . -G "%GENERATOR%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin"
 
 build_script:
   - cmake --build . --config Release
