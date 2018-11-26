@@ -386,7 +386,7 @@ namespace utf
         { using type = iterator_type; };
 
         template<typename T>
-        struct resultof_postfix_increment_impl<T, std::void_t<typename T::postfix_increment_result_type>>
+        struct resultof_postfix_increment_impl<T, void_t<typename T::postfix_increment_result_type>>
         {
             using type = typename T::postfix_increment_result_type;
         };
