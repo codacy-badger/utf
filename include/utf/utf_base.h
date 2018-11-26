@@ -10,7 +10,7 @@
 
 # define UTF_PLATFORM_LITTLE_ENDIAN utf::little_endian
 # define UTF_PLATFORM_BIG_ENDIAN utf::big_endian
-# ifdef(_WIN32)
+# ifdef _WIN32
 #   define UTF_PLATFORM_ENDIANESS UTF_PLATFORM_LITTLE_ENDIAN
 #   define UTF_PLATFORM_BSWAP32(U32) _byteswap_ulong(U32)
 #   define UTF_PLATFORM_BSWAP16(U16) _byteswap_ushort(U16)
