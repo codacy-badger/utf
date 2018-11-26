@@ -113,12 +113,12 @@ namespace utf
     {
         static_assert(sizeof...(selected) < 2, "Multiple overlapping policies specified, single policy expected.");
 
-		template <typename... selected>
+		template <typename... >
 		struct select_first_or_default {  using type = typename policy_default<impl, policy_tmpl>::type; };
 
-		template <typename selected, typename... rest>
-		struct select_first_or_default<selected, rest...>
-		{ using type = typename selected::type; };
+		template <typename selected_, typename... rest>
+		struct select_first_or_default<selected_, rest...>
+		{ using type = typename selected_::type; };
 		
         using type = 
             typename policy_tmpl<void>::template handler<

@@ -4,7 +4,7 @@
  * LICENSE file in the root directory of this source tree)
  */
  
-/* this file has been automatically generated on 2018-11-25 01:19:09 and should not be edited manually. */
+/* this file has been automatically generated on 2018-11-26 02:24:52 and should not be edited manually. */
  
 #pragma once
  #include <algorithm>
@@ -112,46 +112,42 @@ namespace utf
     #define UTF_POLICY_DEFAULT(ITER,POLICYTYPE,VALUE) \
     template <typename...Ts> struct policy_default<ITER<Ts...>,POLICYTYPE> { using type = VALUE; }  
 
-    template < typename impl, template <typename...> class tag_tmpl, typename... selected>
-    struct select_first_or_default
-    {
-        using type = typename policy_default<impl, tag_tmpl>::type;
-    };
 
-    template < typename impl, template <typename...> class tag_tmpl, typename selected, typename... rest>
-    struct select_first_or_default<impl, tag_tmpl, selected, rest...>
-    {
-        using type = typename selected::type;
-    };
-
-    template < typename impl, template <typename...> class tag_tmpl, typename selected, typename... tags>
+    template < typename impl, template <typename...> class policy_tmpl, typename selected, typename policy_list>
     struct select_policy_handler_impl;
 
-    template < typename impl, template <typename...> class tag_tmpl, typename... selected, typename... tags>
-    struct select_policy_handler_impl<impl, tag_tmpl, type_list<selected...>, tags...>
+    template < typename impl, template <typename...> class policy_tmpl, typename... selected, typename... policies>
+    struct select_policy_handler_impl<impl, policy_tmpl, type_list<selected...>, type_list<policies...>>
     {
         static_assert(sizeof...(selected) < 2, "Multiple overlapping policies specified, single policy expected.");
 
+		template <typename... >
+		struct select_first_or_default {  using type = typename policy_default<impl, policy_tmpl>::type; };
+
+		template <typename selected_, typename... rest>
+		struct select_first_or_default<selected_, rest...>
+		{ using type = typename selected_::type; };
+		
         using type = 
-            typename tag_tmpl<void>::template handler<
+            typename policy_tmpl<void>::template handler<
                 impl, 
-                typename select_first_or_default<impl, tag_tmpl, selected...>::type
+				typename select_first_or_default<selected...>::type
             >;
     };
 
-    template < typename impl, template <typename...> class tag_tmpl, typename... selected, typename tag, typename... tags>
-    struct select_policy_handler_impl<impl, tag_tmpl, type_list< selected...>, tag, tags...> :
+    template < typename impl, template <typename...> class policy_tmpl, typename... selected, typename policy, typename... policies>
+    struct select_policy_handler_impl<impl, policy_tmpl, type_list< selected...>, type_list<policy, policies...>> :
         select_policy_handler_impl <
         impl,
-        tag_tmpl,
+        policy_tmpl,
         std::conditional_t<
-            is_instance_of_template_v<tag_tmpl, tag>,
-            type_list<selected..., tag>,
+            is_instance_of_template_v<policy_tmpl, policy>,
+            type_list<selected..., policy>,
             type_list<selected...>
-        >, tags... > {};
+        >, type_list<policies...> > {};
 
-    template < typename impl, template <typename...> class tag_tmpl, typename... tags>
-    using select_policy_handler_t = typename select_policy_handler_impl<impl, tag_tmpl, type_list<>, tags...>::type;
+    template < typename impl, template <typename...> class policy_tmpl, typename... policies>
+    using select_policy_handler_t = typename select_policy_handler_impl<impl, policy_tmpl, type_list<>, type_list<policies...>>::type;
 
     template <template <typename...> class test, typename default_, typename... args>
     struct select_argument_or_default
